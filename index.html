@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>JSON-</h1>
+    <h2>JavaScript Object Notation</h2>
+    <ul id="users-container">
+
+    </ul>
+    <script>
+        /* const user = {
+            id: 11024,
+            name: "Shamim Ahammed"
+        }
+        //JSON Format API {"id":11024,"name":"Shamim Ahammed"}
+        const jsonUser = JSON.stringify(user);
+        console.log(jsonUser);
+        const jsonFromUser = {
+            id: 258,
+            name: "Lovely",
+            friends: ['Samiya', 'Sajib', 'Salman'],
+            friendsAge: [19, 21, 22]
+        }
+        const jsonUser2 = JSON.stringify(jsonFromUser);
+        console.log(jsonUser2);
+        const jsonUser2String = JSON.parse(jsonUser2);
+        console.log(jsonUser2String); */
+        fetch('https://jsonplaceholder.typicode.com/users')
+        .then(response => response.json())
+        .then(json => displayUsers(json))
+
+        const displayUsers = users => {
+            const userName = users.map(user => user.username);
+            console.log(userName);
+            const ul = document.getElementById("users-container");
+            /* for(let i = 0; i < userName.length; i++){
+                const user = userName[i];
+                const li = document.createElement("li");
+                li.innerText = user;
+                ul.appendChild(li);
+            } */
+            userName.map(usersN=>{
+                const li= document.createElement("li");
+                li.innerText = usersN;
+                ul.appendChild(li);
+            })
+        }
+    </script>
+</body>
+
+</html>
